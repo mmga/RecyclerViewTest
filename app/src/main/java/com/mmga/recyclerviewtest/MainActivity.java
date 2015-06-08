@@ -13,22 +13,30 @@ public class MainActivity extends Activity {
 
     private List<String> mDatas;
     private RecyclerView mRecyclerView;
-    private HomeAdapter mAdapter;
+    private MyAdapter mAdapter;
+    private LinearLayoutManager mLayoutManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initData();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+//        固定尺寸的设置为true可以提高性能
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new HomeAdapter(mDatas);
+
+//        设置一个LayoutManager:LinearLayoutManager,GridLayoutManager或者StaggeredGridLayoutManager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+//        设置Adapter
+        mAdapter = new MyAdapter(mDatas);
         mRecyclerView.setAdapter(mAdapter);
-//        添加分割线
+
+//        自定义分割线
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
     }
 

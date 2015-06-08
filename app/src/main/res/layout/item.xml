@@ -10,8 +10,5 @@
         android:layout_height="50dp"
         android:id="@+id/id_num"
         android:gravity="start"
-        android:text="1"/>
-
-
-
+        />
 </FrameLayout>
